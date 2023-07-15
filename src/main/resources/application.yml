@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: test_zhuLiTing
+  main:
+    allow-bean-definition-overriding: true
+  #  数据库
+  datasource:
+    username: root
+    password: 1430110388jkl
+    url: jdbc:mysql://127.0.0.1:3306/gtmc_dms_auth?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      leak-detection-threshold: 60000
+      maximum-pool-size: 10
+      idle-timeout: 300000
+      max-lifetime: 600000
+      connection-timeout: 60000
+      validation-timeout: 10000
+
+  redis:
+    host: 127.0.0.1
+    #    password: redis123
+    port: 6379
+    timeout: 0
+
+#配置日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# 注册服务到eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  # 配置eureka上服务的默认描述信息
+  instance:
+    instance-id: test_zhuLiTing
+    # 显示访问路径的ip地址
+    prefer-ip-address: true
+info:
+  app.name: springcloud-provider
+  funcation: description service
